@@ -77,7 +77,7 @@ Three voxel resolutions benchmarked on the same LiDAR scan using CUDA event timi
 | 0.2m | optimal | 7.2 MB | 0.22% |
 | 0.5m | fastest | 0.5 MB | 1.06% |
 
-**0.2m is the correct choice.** 0.1m uses 8x more memory for minimal gain. 0.5m misses objects smaller than 0.5m — pedestrians are approximately 0.4m wide and would be skipped entirely.
+**0.2m is the correct choice.** 0.1m uses 8x more memory for minimal gain. 0.5m misses objects smaller than 0.5m - pedestrians are approximately 0.4m wide and would be skipped entirely.
 
 ---
 
