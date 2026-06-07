@@ -1,6 +1,6 @@
-# Day 10 — Neural Occupancy Network with 4-State Uncertainty
+# Day 10 - Neural Occupancy Network with 4-State Uncertainty
 
-> MS Robotics & Autonomous Systems Engineering — Arizona State University — Dec 2026
+> MS Robotics & Autonomous Systems Engineering - Arizona State University - Dec 2026
 
 ---
 
@@ -13,11 +13,11 @@ But there is a third state that matters more than either.
 
 A voxel marked FREE because a laser confirmed it is empty is fundamentally different from a voxel marked FREE because nobody bothered to check. Planning into the second kind of space is how autonomous vehicles crash.
 
-This project builds a probabilistic occupancy system with four distinct states per voxel, measures where uncertainty becomes dominant, and finds the exact distance at which path planning becomes unsafe — something no published student portfolio has measured.
+This project builds a probabilistic occupancy system with four distinct states per voxel, measures where uncertainty becomes dominant, and finds the exact distance at which path planning becomes unsafe - something no published student portfolio has measured.
 
 ---
 
-## Live Demo — 108 KITTI Frames
+## Live Demo - 108 KITTI Frames
 
 ![Demo Video](https://drive.google.com/uc?id=1ZNbcSl2gKXoPitwYaoxb7tBR4fgRdML5)
 
@@ -39,7 +39,7 @@ This project builds a probabilistic occupancy system with four distinct states p
 
 The chart above shows the core finding of this project.
 
-At close range the system has strong evidence — FREE_CONFIRMED voxels dominate 6:1 over FREE_ASSUMED. As distance increases, the LiDAR scan lines spread apart, occlusion shadows grow larger, and the ratio collapses.
+At close range the system has strong evidence - FREE_CONFIRMED voxels dominate 6:1 over FREE_ASSUMED. As distance increases, the LiDAR scan lines spread apart, occlusion shadows grow larger, and the ratio collapses.
 
 **At 40-50m from the sensor, FREE_CONFIRMED and FREE_ASSUMED voxels are equal in count.**
 
@@ -59,9 +59,9 @@ Beyond this boundary the system cannot distinguish confirmed free space from ass
 
 ![Uncertainty Heatmap](https://drive.google.com/uc?id=1RpGTAAaOExDQ65ytObFhbLKJWclhhsSD)
 
-Left panel shows the neural network confidence score across the forward 50m region. Green = the system is confident. Red/yellow = the system is uncertain. The scan line pattern is visible — high confidence stripes where laser beams hit, low confidence gaps between them.
+Left panel shows the neural network confidence score across the forward 50m region. Green = the system is confident. Red/yellow = the system is uncertain. The scan line pattern is visible - high confidence stripes where laser beams hit, low confidence gaps between them.
 
-Right panel shows the 4-state classification. The yellow band ahead is the road surface classified as FREE_ASSUMED. Purple rings around objects are UNKNOWN_DANGER zones — the occlusion shadows where another vehicle could be hiding.
+Right panel shows the 4-state classification. The yellow band ahead is the road surface classified as FREE_ASSUMED. Purple rings around objects are UNKNOWN_DANGER zones - the occlusion shadows where another vehicle could be hiding.
 
 ---
 
@@ -115,7 +115,7 @@ The difference between FREE-ASSUMED and UNKNOWN-DANGER is not academic. A planne
 
 ---
 
-## Neural Network — Why It Is Not Just Geometry
+## Neural Network - Why It Is Not Just Geometry
 
 Ray casting gives us OCCUPIED and FREE-CONFIRMED with certainty. It cannot classify the remaining 94% of voxels.
 
@@ -158,12 +158,12 @@ training data  : 400,000 samples across 200 KITTI frames
 ## How This Connects to the Series
 
 ```
-Day 1:  RANSAC + DBSCAN detector — found objects
-Day 7:  fog unsafe below 75m — sensor ODD boundary
-Day 8:  depth completion — fused LiDAR and camera
-Day 9:  domain shift — 58.4% drop across continents
+Day 1:  RANSAC + DBSCAN detector - found objects
+Day 7:  fog unsafe below 75m - sensor ODD boundary
+Day 8:  depth completion - fused LiDAR and camera
+Day 9:  domain shift - 58.4% drop across continents
 
-Day 10: occupancy network — answers the deeper question
+Day 10: occupancy network - answers the deeper question
         not just WHERE objects are
         but WHERE space is SAFE to plan through
         and WHERE the system simply does not know
@@ -238,8 +238,8 @@ day-010-occupancy-network/
 | P1.3 | PointPillars 3D Detector | 98.9% loss reduction from scratch | ✅ |
 | P1.4 | Multi-Camera BEV Perception | 178 objects from 6 cameras | ✅ |
 | P1.5 | Multi-Object Tracking SORT | Detector is bottleneck not tracker | ✅ |
-| P1.6 | Semantic Segmentation ROS2 | 52.6 FPS — warmup cost measured | ✅ |
+| P1.6 | Semantic Segmentation ROS2 | 52.6 FPS - warmup cost measured | ✅ |
 | P1.7 | Adverse Weather Analysis | Fog unsafe below 75m visibility | ✅ |
 | P1.8 | LiDAR-Camera Depth Completion | 44x MAE improvement at 0-10m | ✅ |
-| P1.9 | Domain Shift Analysis | 58.4% drop — sensor not scene | ✅ |
-| P1.10 | Neural Occupancy Network | Unsafe boundary at 40m — 4-state uncertainty | ✅ |
+| P1.9 | Domain Shift Analysis | 58.4% drop - sensor not scene | ✅ |
+| P1.10 | Neural Occupancy Network | Unsafe boundary at 40m - 4-state uncertainty | ✅ |
